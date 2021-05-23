@@ -1,22 +1,30 @@
  #SpringIOC Application
  
  1.Test.java
+ 
  package com.bms.beans;
 
 import java.util.Iterator;
+
 import java.util.List;
+
 import java.util.Map;
+
 import java.util.Set;
 
 public class Test {
 	int id;
+	
 	String name;
+	
 	double salary;
 
 	int arr[];
+	
 	String s[];
 
 	Employee emp;
+	
 	Employee e[];
 
 	List<Employee> list;
@@ -90,17 +98,23 @@ public class Test {
 
 
 2.Employee.java
+
 package com.bms.beans;
 
 public class Employee {
+
 int id;
+
 String name;
+
 public void setId(int id) {
 	this.id = id;
 }
+
 public void setName(String name) {
 	this.name = name;
 }
+
 @Override
 public String toString() {
 	return "Employee [id=" + id + ", name=" + name + "]";
@@ -112,9 +126,11 @@ public String toString() {
 }
 
 3.ClientCode
+
 package com.bms.beans;
 
 import org.springframework.context.ApplicationContext;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ClientCode {
@@ -130,7 +146,9 @@ public class ClientCode {
 }
 
 4.spring.xml
+
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xmlns:context="http://www.springframework.org/schema/context"	
@@ -138,18 +156,18 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
  http://www.springframework.org/schema/context
  http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
 <context:property-placeholder location="classpath:mydata.properties"/>
 
 <bean id="e1" class="com.bms.beans.Employee">
 	<property name="id" value="${id}"/>
 	<property name="name" value="${name}"/>
 </bean>
+
 <bean id="e2" class="com.bms.beans.Employee">
 	<property name="id" value="${id1}"/>
 	<property name="name" value="${name1}"/>
 </bean>
-
-
 
 <bean id="test" class="com.bms.beans.Test" scope="singleton">
 	<property name="id" value="1001"/>
@@ -207,10 +225,15 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	
 	
 </bean>
+
 </beans>
 
 5.mydata.properties
+
 id=1001
+
 name=raju
+
 id1=1002
+
 name1=sunil
